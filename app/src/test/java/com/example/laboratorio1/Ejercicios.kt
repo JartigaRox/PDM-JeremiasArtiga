@@ -98,6 +98,31 @@ class ejerciciosLaboratorio(){
         }
 
     }
+    class Estudiante(
+        val nombre: String,
+        val carnet: Int,
+        val asignatura: String
+    ) {
+        fun mostrarDatos(){
+            println("El nombre del estudiante es: $nombre")
+            println("El carnet del estudiante es: $carnet")
+        }
+    }
+    fun buscarPorMateria(listaEstudiantes: List<Estudiante>, materiaBuscada: String) {
+        println("Buscando inscritos en: $materiaBuscada")
+        var encontrados = 0
+
+        for (estudiante in listaEstudiantes) {
+            if (estudiante.asignatura == materiaBuscada) {
+                estudiante.mostrarDatos()
+                encontrados++
+            }
+        }
+        println("Total de estudiantes encontrados: $encontrados\n")
+    }
+
+
+
     @Test
     fun probarCompu(){
         val miPC = Computadora("Ryzen 5", 8, 256, "Windows 11")
@@ -130,6 +155,22 @@ class ejerciciosLaboratorio(){
 
         val resultadoDivision = miCalculadora.dividir(15.0, 3.0)
         println("El resultado de la división es: $resultadoDivision")
+
+    }
+
+    @Test
+    fun pasarLista(){
+        val est1 = Estudiante("Mariano López", 202601, "Programación de Dispositivos Móviles")
+        val est2 = Estudiante("Marian López", 202602, "Programación de Dispositivos Móviles")
+        val est3 = Estudiante("Marito López", 202603, "Programación de Dispositivos Móviles")
+        val est4 = Estudiante("María López", 202604, "Análisis Numérico")
+        val est5 = Estudiante("Marío López", 202605, "Análisis Numérico")
+        val est6 = Estudiante("Don López", 202606, "Análisis Numérico")
+        val est7 = Estudiante("Dona López", 202607, "Análisis Numérico")
+
+        val ciclo01 = listOf(est1, est2, est3, est4,est5, est6,est7)
+
+        buscarPorMateria(ciclo01, "Programación de Dispositivos Móviles")
 
     }
 }
